@@ -223,13 +223,17 @@ function (_Component) {
     key: "render",
     value: function render() {
       var status = this.state.status;
-      var className = this.props.className;
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          rootStyle = _this$props2.rootStyle;
 
       if (status === 'hidden') {
         return _react["default"].createElement("div", null);
       }
 
-      return _react["default"].createElement("div", null, _react["default"].createElement("div", {
+      return _react["default"].createElement("div", {
+        style: rootStyle
+      }, _react["default"].createElement("div", {
         style: this.buildStyle(),
         className: className
       }), _react["default"].createElement("div", {
@@ -281,7 +285,8 @@ LoadingBar.propTypes = {
   scope: _propTypes.string,
   showFastActions: _propTypes.bool,
   style: _propTypes.object,
-  updateTime: _propTypes.number
+  updateTime: _propTypes.number,
+  rootStyle: _propTypes.object
 };
 LoadingBar.defaultProps = {
   className: '',
@@ -292,7 +297,8 @@ LoadingBar.defaultProps = {
   scope: _loading_bar_ducks.DEFAULT_SCOPE,
   showFastActions: false,
   style: {},
-  updateTime: UPDATE_TIME
+  updateTime: UPDATE_TIME,
+  rootStyle: {}
 };
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
