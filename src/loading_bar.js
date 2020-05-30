@@ -32,6 +32,7 @@ class LoadingBar extends Component {
     showFastActions: bool,
     style: object,
     updateTime: number,
+    rootStyle: object,
   }
 
   static defaultProps = {
@@ -44,6 +45,7 @@ class LoadingBar extends Component {
     showFastActions: false,
     style: {},
     updateTime: UPDATE_TIME,
+    rootStyle: {},
   }
 
   static shouldStart(props, state) {
@@ -211,13 +213,13 @@ class LoadingBar extends Component {
 
   render() {
     const { status } = this.state
-    const { className } = this.props
+    const { className, rootStyle } = this.props
     if (status === 'hidden') {
       return <div />
     }
 
     return (
-      <div>
+      <div style={rootStyle}>
         <div style={this.buildStyle()} className={className} />
         <div style={{ display: 'table', clear: 'both' }} />
       </div>
